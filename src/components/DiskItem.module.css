@@ -1,0 +1,117 @@
+.disk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(-60px);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.disk.in {
+  animation: diskIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes diskIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Eject animation ─────────────────────────────────────── */
+.disk.ejecting {
+  animation: eject 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+  pointer-events: none;
+}
+
+@keyframes eject {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  55%  { opacity: 1; transform: translateY(-10px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-18px) scale(1.14); }
+}
+
+/* ── Icon wrapper (provides the gray bg + rounded corners) ── */
+.iconWrap {
+  width: 130px;
+  height: 130px;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.7));
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+.iconFallback {
+  width: 100%;
+  height: 100%;
+}
+
+/* hover lift */
+.disk:hover .iconWrap {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.8));
+}
+
+/* keyboard-selected: blue glow */
+.disk.selected .iconWrap {
+  transform: translateY(-4px);
+  filter:
+    drop-shadow(0 0 12px rgba(30, 120, 255, 0.65))
+    drop-shadow(0 10px 24px rgba(0, 0, 0, 0.75));
+}
+
+/* ── Label ────────────────────────────────────────────────── */
+.name {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.1px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ── Boot arrow — hidden; appears on hover or keyboard select */
+.bootArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  height: 28px;
+}
+
+.arrowSvg {
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.88);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.disk:hover .arrowSvg,
+.disk.selected .arrowSvg {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 540px) {
+  .iconWrap {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -1,0 +1,206 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: backdropIn 0.18s ease forwards;
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.panel {
+  position: relative;
+  width: 380px;
+  background: rgba(24, 24, 28, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.85), 0 0 0 0.5px rgba(255,255,255,0.06) inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 28px 24px;
+  animation: panelIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: scale(0.92) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Close button ─────────────────────────────────────── */
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Avatar ───────────────────────────────────────────── */
+.avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 14px;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+/* ── Name / title / arch ──────────────────────────────── */
+.name {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: -0.3px;
+  margin: 0 0 4px;
+}
+
+.title {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.1px;
+  margin: 0 0 5px;
+}
+
+.arch {
+  font-size: 10px;
+  font-family: "SF Mono", ui-monospace, "Cascadia Code", monospace;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.2px;
+  margin: 0;
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 18px 0;
+  flex-shrink: 0;
+}
+
+/* ── Section label ────────────────────────────────────── */
+.sectionLabel {
+  width: 100%;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+/* ── Makes chips ──────────────────────────────────────── */
+.chips {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3px 10px;
+  letter-spacing: 0.1px;
+}
+
+/* ── Language icons ───────────────────────────────────── */
+.langs {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.lang {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.lang img {
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.langName {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.1px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ── Info table ───────────────────────────────────────── */
+.infoTable {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.3px;
+  width: 64px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.value {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: color 0.12s ease;
+  letter-spacing: 0.1px;
+}
+
+.value:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.built {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.18);
+  letter-spacing: 0.2px;
+  margin: 0;
+}
