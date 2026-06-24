@@ -20,12 +20,6 @@ export const projects: Project[] = [
     iconBg: "#4a4a4a",
   },
   {
-    name: "Zenith",
-    url: "https://zenith.xenosolutions.dev",
-    image: "/images/zenith.png",
-    iconBg: "#4a4a4a",
-  },
-  {
     name: "About",
     url: "",
     image: "/images/avatar.webp",
